@@ -43,13 +43,11 @@
         {"label": "Google Scholar  ", "href": "https://scholar.google.com/citations?user=SS96qDwAAAAJ&hl=en"},
         {"label": "LinkedIn", "href": "https://www.linkedin.com/in/zhikai-gao/"}
       ],
-      "nav": ["About","Research","Projects","Teaching","Publications","CV","Contact"]
+      "nav": ["About","Research","Teaching","Publications","CV","Contact"]
     },
     "about": "I’m an Assistant Professor of Computer Science at Western Carolina University. I completed my Ph.D. in Computer Science at NC State University (2025). My research focuses on advancing computing and STEM education using data science and computer science technology, such as Artificial Intelligence,  Data Mining, and Software Engineering. Moreover, I am also interested  in Natural Language Processing, Human-computer Interaction, and social computing research.",
     "research": [
       {"title": "Modeling help‑seeking Activity","desc": "Understand students' office hours and post forum activity based on their help-seeking activity and problem-solving activity log data."},
-    ],
-    "projects": [
     ],
     "teaching": ["CS 150: Problem Solving and Programming I","CS 351: Data Structure and Algorithm"],
     "publications": [""]
@@ -74,7 +72,6 @@
     </section>
     <section id="About"><h2>About</h2><p id="about-text"></p></section>
     <section id="Research"><h2>Research</h2><div class="grid cards" id="research-cards"></div></section>
-    <section id="Projects"><h2>Projects</h2><div class="grid cards" id="project-cards"></div></section>
     <section id="Teaching"><h2>Teaching</h2><ul id="teaching-list"></ul></section>
     <section id="Publications"><h2>Publications</h2><ul id="pub-list"></ul></section>
     <section id="CV"><h2>Curriculum Vitae</h2><iframe id="cv-frame" style="width:100%;height:800px;border:none"></iframe></section>
@@ -96,7 +93,6 @@
     data.site.links.forEach(l=>$('#cta-links').append(Object.assign(document.createElement('a'),{href:l.href,textContent:l.label,className:'btn'})));
     $('#about-text').textContent = data.about;
     data.research.forEach(r=>{const c=document.createElement('div');c.className='card';c.innerHTML=`<h3>${r.title}</h3><p>${r.desc}</p>`;$('#research-cards').append(c)});
-    data.projects.forEach(p=>{const c=document.createElement('div');c.className='card';c.innerHTML=`<h3>${p.title}</h3><p>${p.desc}</p>`;$('#project-cards').append(c)});
     data.teaching.forEach(t=>$('#teaching-list').append(Object.assign(document.createElement('li'),{textContent:t})));
     data.publications.forEach(p=>$('#pub-list').append(Object.assign(document.createElement('li'),{textContent:p})));
     $('#contact-line').innerHTML = `Email: <a href="mailto:${data.site.email}">${data.site.email}</a>`;
