@@ -18,13 +18,12 @@
     nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
     .hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:36px;padding:48px 0 24px}
     .hero img{max-width:100%;border-radius:16px;box-shadow:var(--shadow)}
-    .badge{display:inline-flex;align-items:center;gap:10px;padding:6px 10px;border-radius:999px;background:rgba(110,231,183,.12);color:#d1fae5;border:1px solid rgba(110,231,183,.25);font-size:13px}
-    h1{font-size:clamp(28px,5vw,44px);line-height:1.15;margin:14px 0 10px}
+    section{padding:32px 0;border-top:1px solid rgba(255,255,255,.06)}
+    h1{font-size:clamp(28px,5vw,44px)}
     .lead{color:var(--muted);font-size:18px}
-    .cta{display:flex;gap:12px;margin-top:18px}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:#1a1c25;color:var(--text);box-shadow:var(--shadow)}
-    .btn.primary{background:linear-gradient(90deg,#16a34a,#22c55e);border-color:rgba(0,0,0,.2);color:#fff}
-    .btn:hover{transform:translateY(-1px);transition:.15s ease}
+    .grid{display:grid;gap:16px}
+    .grid.cards{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
     footer{padding:26px 0 60px;color:var(--muted);font-size:14px}
     @media (max-width:880px){.hero{grid-template-columns:1fr}nav ul{display:none}}
   </style>
@@ -38,13 +37,25 @@
       "summary": "I build data‑driven tools that make instructors’ lives easier and students’ lives better.",
       "email": "zhikaigao@example.com",
       "photo": "profile.jpg",
+      "cv": "cv.pdf",
       "links": [
         {"label": "GitHub", "href": "https://github.com/your-github"},
         {"label": "Google Scholar", "href": "#"},
         {"label": "LinkedIn", "href": "https://www.linkedin.com/in/your-profile"}
       ],
-      "nav": ["About","Research","Projects","Teaching","Publications","Contact"]
-    }
+      "nav": ["About","Research","Projects","Teaching","Publications","CV","Contact"]
+    },
+    "about": "I’m an Assistant Professor of Computer Science at Western Carolina University. I completed my Ph.D. at NC State University (2025), focusing on help‑seeking behaviors and AI for education.",
+    "research": [
+      {"title": "Modeling help‑seeking","desc": "Predictive models linking coding behavior, queue data, and forum activity."},
+      {"title": "Office hours analytics","desc": "Queue prioritization and patience modeling."}
+    ],
+    "projects": [
+      {"title": "OH Insights","desc": "Dashboards for office hours analytics."},
+      {"title": "Virtual TA Trainer","desc": "Scenario‑based TA practice."}
+    ],
+    "teaching": ["CS1: Introduction to Programming","Software Development","NLP for Undergraduates"],
+    "publications": ["Gao, Z., et al. _Prioritizing Help in Office Hours_. (2025)"]
   }</script>
 
   <header>
@@ -57,15 +68,20 @@
   <main class="container">
     <section class="hero">
       <div>
-        <span class="badge" id="role"></span>
+        <span id="role"></span>
         <h1 id="tagline"></h1>
         <p class="lead" id="summary"></p>
-        <div class="cta" id="cta-links"></div>
+        <div id="cta-links"></div>
       </div>
-      <div>
-        <img id="profile-pic" alt="Profile picture" />
-      </div>
+      <div><img id="profile-pic" alt="Profile picture" /></div>
     </section>
+    <section id="About"><h2>About</h2><p id="about-text"></p></section>
+    <section id="Research"><h2>Research</h2><div class="grid cards" id="research-cards"></div></section>
+    <section id="Projects"><h2>Projects</h2><div class="grid cards" id="project-cards"></div></section>
+    <section id="Teaching"><h2>Teaching</h2><ul id="teaching-list"></ul></section>
+    <section id="Publications"><h2>Publications</h2><ul id="pub-list"></ul></section>
+    <section id="CV"><h2>Curriculum Vitae</h2><iframe id="cv-frame" style="width:100%;height:800px;border:none"></iframe></section>
+    <section id="Contact"><h2>Contact</h2><p id="contact-line"></p></section>
   </main>
 
   <footer><div class="container">© <span id="y"></span> <span id="footer-name"></span></div></footer>
@@ -79,7 +95,14 @@
     $('#tagline').textContent = data.site.tagline;
     $('#summary').textContent = data.site.summary;
     $('#profile-pic').src = data.site.photo;
-    data.site.links.forEach(l=>$('#cta-links').append(Object.assign(document.createElement('a'),{className:'btn',href:l.href,textContent:l.label})));
+    $('#cv-frame').src = data.site.cv;
+    data.site.links.forEach(l=>$('#cta-links').append(Object.assign(document.createElement('a'),{href:l.href,textContent:l.label,className:'btn'})));
+    $('#about-text').textContent = data.about;
+    data.research.forEach(r=>{const c=document.createElement('div');c.className='card';c.innerHTML=`<h3>${r.title}</h3><p>${r.desc}</p>`;$('#research-cards').append(c)});
+    data.projects.forEach(p=>{const c=document.createElement('div');c.className='card';c.innerHTML=`<h3>${p.title}</h3><p>${p.desc}</p>`;$('#project-cards').append(c)});
+    data.teaching.forEach(t=>$('#teaching-list').append(Object.assign(document.createElement('li'),{textContent:t})));
+    data.publications.forEach(p=>$('#pub-list').append(Object.assign(document.createElement('li'),{textContent:p})));
+    $('#contact-line').innerHTML = `Email: <a href="mailto:${data.site.email}">${data.site.email}</a>`;
     $('#footer-name').textContent = data.site.name;
     $('#y').textContent = new Date().getFullYear();
   </script>
