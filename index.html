@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zhikai Gao — Personal Site</title>
+  <meta name="description" content="Assistant Professor & Researcher in AI for Education. Personal site, projects, publications, and contact." />
+  <meta property="og:title" content="Zhikai Gao — Personal Site" />
+  <meta property="og:description" content="AI for Education • Office Hours Research • CS Education" />
+  <meta property="og:type" content="website" />
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --panel: #121318;
+      --text: #e6e6e6;
+      --muted: #a9b0b7;
+      --brand: #6ee7b7;
+      --link: #93c5fd;
+      --card: #171923;
+      --shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 80% -10%, #223 0%, transparent 60%), var(--bg);
+      color: var(--text);
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 24px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(140%) blur(6px);
+      background: linear-gradient(180deg, rgba(12,12,16,.85), rgba(12,12,16,.65));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .2px; }
+    .brand .dot { width: 10px; height: 10px; border-radius: 999px; background: var(--brand); box-shadow: 0 0 16px var(--brand); }
+    nav ul { display: flex; gap: 18px; list-style: none; margin: 0; padding: 0; }
+    .nav a { opacity: .9; }
+    .nav a:hover { opacity: 1; }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 36px; padding: 48px 0 24px; }
+    .badge { display: inline-flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 999px; background: rgba(110,231,183,.12); color: #d1fae5; border: 1px solid rgba(110,231,183,.25); font-size: 13px; }
+    h1 { font-size: clamp(28px, 5vw, 44px); line-height: 1.15; margin: 14px 0 10px; }
+    .lead { color: var(--muted); font-size: 18px; }
+    .cta { display: flex; gap: 12px; margin-top: 18px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.1); background: #1a1c25; color: var(--text); box-shadow: var(--shadow); }
+    .btn.primary { background: linear-gradient(90deg, #16a34a, #22c55e); border-color: rgba(0,0,0,.2); color: white; }
+    .btn:hover { transform: translateY(-1px); transition: .15s ease; }
+
+    .hero-card { background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; padding: 20px; box-shadow: var(--shadow); }
+    .hero-card h3 { margin: 0 0 6px; font-size: 14px; color: var(--muted); }
+    .hero-card .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip { padding: 6px 10px; border-radius: 999px; background: var(--card); border: 1px solid rgba(255,255,255,.08); font-size: 13px; }
+
+    /* Sections */
+    section { padding: 32px 0; border-top: 1px solid rgba(255,255,255,.06); }
+    h2 { font-size: 22px; margin: 0 0 12px; }
+    p { margin: 8px 0; }
+
+    .grid { display: grid; gap: 16px; }
+    .grid.cards { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card { background: var(--card); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 16px; box-shadow: var(--shadow); }
+    .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .meta { color: var(--muted); font-size: 14px; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    /* Footer */
+    footer { padding: 26px 0 60px; color: var(--muted); font-size: 14px; }
+
+    /* Responsive */
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      nav ul { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="dot" aria-hidden="true"></div>
+        <a href="#" aria-label="Home">Zhikai Gao</a>
+      </div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#teaching">Teaching</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="badge">Assistant Professor • Western Carolina University</span>
+        <h1>AI for Education, help‑seeking, and better office hours.</h1>
+        <p class="lead">I’m Zhikai Gao, focusing on data‑driven support for student learning: modeling help‑seeking, office hours analytics, and practical, ethical AI tools for CS education.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">See my work</a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Highlights">
+        <h3>Research areas</h3>
+        <div class="chips">
+          <span class="chip">AI in Education</span>
+          <span class="chip">Help‑seeking behavior</span>
+          <span class="chip">Office hours systems</span>
+          <span class="chip">Educational data mining</span>
+          <span class="chip">LLM applications</span>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="two-col">
+        <p>I’m an Assistant Professor of Computer Science at Western Carolina University. I completed my Ph.D. at NC State University (2025), where I studied how students seek and receive help in programming courses and how AI can responsibly support that process. Before joining WCU, I taught and mentored students across CS1/CS2 and software development courses.</p>
+        <p>Outside of work, I enjoy cooking and reading mystery novels. I’m passionate about practical learning experiences and building tools that make instructors’ lives easier and students’ lives better.</p>
+      </div>
+    </section>
+
+    <section id="research">
+      <h2>Research</h2>
+      <div class="grid cards">
+        <article class="card">
+          <h3>Modeling help‑seeking in CS courses</h3>
+          <p>Predictive models linking coding behavior, queue data, and Piazza activity to when students seek help and what help they need.</p>
+          <p class="meta">EDM • SIGCSE • JEDM</p>
+        </article>
+        <article class="card">
+          <h3>Office hours analytics & tooling</h3>
+          <p>Queue prioritization, patience modeling with survival analysis, and design guidelines for equitable, efficient office hours.</p>
+          <p class="meta">2020–2025</p>
+        </article>
+        <article class="card">
+          <h3>Responsible LLMs in education</h3>
+          <p>Instructor‑in‑the‑loop workflows, automated essay scoring with open‑source LLMs, and classroom‑ready AI integrations.</p>
+          <p class="meta">Open‑source • Reproducible</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <div class="grid cards">
+        <article class="card">
+          <h3>OH Insights</h3>
+          <p>Dashboards for office hours: wait‑time trends, cancellation patterns, and session outcomes to guide staffing and policy.</p>
+          <p class="meta"><a href="#">GitHub</a> · <a href="#">Paper</a></p>
+        </article>
+        <article class="card">
+          <h3>Virtual TA Trainer</h3>
+          <p>Scenario‑based practice for TAs with simulated student requests and rubric‑guided feedback.</p>
+          <p class="meta"><a href="#">GitHub</a> · <a href="#">Demo</a></p>
+        </article>
+        <article class="card">
+          <h3>Essay Scoring with LLMs</h3>
+          <p>Reliable, auditable pipelines for automated writing feedback using small, fine‑tuned models.</p>
+          <p class="meta"><a href="#">Preprint</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <ul>
+        <li>CS1: Introduction to Programming (Java) — Emphasis on practice‑first learning</li>
+        <li>Software Development — Real‑world projects & code reviews</li>
+        <li>NLP for Undergraduates — Classic methods, minimal prerequisites</li>
+      </ul>
+    </section>
+
+    <section id="publications">
+      <h2>Publications (selected)</h2>
+      <ul>
+        <li>Gao, Z., et al. <em>Prioritizing Help in Office Hours: Patience Modeling and Design Implications</em>. (2025).</li>
+        <li>Gao, Z., et al. <em>Classroom‑Ready LLM Workflows for Essay Feedback</em>. (2024).</li>
+        <li>Gao, Z., et al. <em>When Do Students Ask for Help? Signals from Coding Traces and Forums</em>. (2023).</li>
+      </ul>
+      <p class="meta">Full list on <a href="#">Google Scholar</a>.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:zhikaigao@example.com">zhikaigao@example.com</a> · GitHub: <a href="https://github.com/your-github">@your-github</a> · LinkedIn: <a href="https://www.linkedin.com/in/your-profile">/in/your-profile</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Zhikai Gao. Built with plain HTML/CSS. Hosted on GitHub Pages.</div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
